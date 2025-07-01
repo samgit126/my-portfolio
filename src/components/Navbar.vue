@@ -1,356 +1,165 @@
-<script setup>
-import { ref } from "vue";
-
-const darkMode = ref(false);
-const openDropdown = ref(false);
-const mobileMenu = ref(false);
-const showLangCard = ref(false);
-const toggleDarkMode = () => {
-  darkMode.value = !darkMode.value;
-};
-const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-};
-</script>
 <template>
-  <nav
-    class="fixed top-0 left-0 right-0 bg-qelem-white shadow-md px-2 py-4 lg:py-6 flex grow items-center justify-between w-full z-30">
-    <!-- Logo Section -->
-    <div class="flex items-center space-x-2 xl:space-x-4 xl:px-6  min-w-0">
-      <img src="/logo.png" alt="Logo" class="h-10 w-10 min-w-[40px] object-contain" />
-      <div class="min-w-0">
-        <h1 class="xl:text-xl md:text-sm text-qelem-primary font-bold tracking-wide">
-          Addis Ababa Education Bureau
-        </h1>
-        <p class="text-xs xl:text-md text-qelem-netural tracking-wide">
-          QMT Exam Service
-        </p>
-      </div>
+  <nav class="bg-white/80 backdrop-blur-md rounded-2xl shadow px-4 py-3 mx-24 my-5 flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <span class="text-2xl font-semibold text-gray-900">
+        Samuel <span class="text-blue-500">Temesgen</span>
+      </span>
     </div>
 
-    <!-- Links -->
-    <div
-      class="hidden lg:flex flex-wrap space-x-3 xl:space-x-6  text-base lg:text-lg md:text-sm font-medium text-qelem-netural-300 cursor-pointer ">
-      <router-link
-        to="/"
-        class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-        Home
-        <span
-          class="absolute left-0 right-0 bottom-[-20px] md:bottom-[-35px] w-full h-0.5 bg-qelem-secondary scale-x-0 transition-transform duration-300 group-hover:scale-x-100">
-        </span>
-      </router-link>
-      <router-link to="/" 
-        @click.prevent="scrollToSection('check-result')"
-        class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-        Check Result
-        <span
-          class="absolute left-0 right-0 bottom-[-20px] md:bottom-[-35px] w-full h-0.5 bg-qelem-secondary scale-x-0 transition-transform duration-300 group-hover:scale-x-100">
-        </span>
-      </router-link>
-      <router-link
-        to="/complaint"
-        class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-        Complaint
-        <span
-          class="absolute left-0 right-0 bottom-[-20px] md:bottom-[-35px] w-full h-0.5 bg-qelem-secondary scale-x-0 transition-transform duration-300 group-hover:scale-x-100">
-        </span>
-      </router-link>
-      <router-link
-        to="/top-scorers"
-        class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-        Top Scorers
-        <span
-          class="absolute left-0 right-0 bottom-[-20px] md:bottom-[-35px] w-full h-0.5 bg-qelem-secondary scale-x-0 transition-transform duration-300 group-hover:scale-x-100">
-        </span>
-      </router-link>
-      <!-- Resource Dropdown -->
-      <div class="relative" @click="openDropdown = !openDropdown">
-        <button
-          class="hover:text-qelem-secondary group relative flex items-center cursor-pointer whitespace-nowrap">
-          Resources
-          <svg
-            class="ml-1 w-5 h-5 md:w-6 md:h-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex items-center space-x-2 lg:space-x-4">
+      <li>
+        <a href="#" class="flex items-center px-4 py-2 rounded-xl bg-gray-100 text-gray-900 font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M9.447 15.398a.75.75 0 1 0-.894 1.204A5.77 5.77 0 0 0 12 17.75a5.77 5.77 0 0 0 3.447-1.148a.75.75 0 1 0-.894-1.204A4.27 4.27 0 0 1 12 16.25a4.27 4.27 0 0 1-2.553-.852" />
+            <path fill="currentColor" fill-rule="evenodd" d="M12 1.25c-.708 0-1.351.203-2.05.542c-.674.328-1.454.812-2.427 1.416L5.456 4.491c-.92.572-1.659 1.03-2.227 1.465c-.589.45-1.041.91-1.368 1.507c-.326.595-.472 1.229-.543 1.978c-.068.725-.068 1.613-.068 2.726v1.613c0 1.904 0 3.407.153 4.582c.156 1.205.486 2.178 1.23 2.947c.747.773 1.697 1.119 2.875 1.282c1.14.159 2.598.159 4.434.159h4.116c1.836 0 3.294 0 4.434-.159c1.177-.163 2.128-.509 2.876-1.282c.743-.769 1.073-1.742 1.23-2.947c.152-1.175.152-2.678.152-4.582v-1.613c0-1.113 0-2-.068-2.726c-.07-.75-.217-1.383-.543-1.978c-.327-.597-.78-1.056-1.368-1.507c-.568-.436-1.306-.893-2.227-1.465l-2.067-1.283c-.973-.604-1.753-1.088-2.428-1.416c-.697-.34-1.34-.542-2.049-.542M8.28 4.504c1.015-.63 1.73-1.072 2.327-1.363c.581-.283.993-.391 1.393-.391s.812.108 1.393.391c.598.29 1.312.733 2.327 1.363l2 1.241c.961.597 1.636 1.016 2.14 1.402c.489.375.77.684.963 1.036c.193.353.306.766.365 1.398c.061.648.062 1.465.062 2.623v1.521c0 1.97-.002 3.376-.14 4.443c-.136 1.048-.393 1.656-.82 2.099c-.425.439-1.003.7-2.004.839c-1.026.142-2.379.144-4.286.144h-4c-1.908 0-3.26-.002-4.286-.144c-1.001-.14-1.579-.4-2.003-.84c-.428-.442-.685-1.05-.82-2.098c-.14-1.067-.141-2.472-.141-4.443v-1.521c0-1.158 0-1.975.062-2.623c.059-.632.172-1.045.365-1.398c.193-.352.474-.661.964-1.036c.503-.386 1.178-.805 2.139-1.402z" clip-rule="evenodd" />
           </svg>
-          <span
-            class="absolute left-0 right-0 bottom-[-20px] md:bottom-[-35px] w-full h-0.5 bg-qelem-secondary scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-        </button>
-        <div
-          v-if="openDropdown"
-          class="absolute left-0 md:-left-24 mt-8 md:mt-11 w-56 md:w-72 bg-white border border-gray-100 rounded-xl shadow-lg z-10 text-qelem-netural">
-          <a
-            @click.prevent="scrollToSection('feedback')"
-            class="block mx-2 md:mx-4 mt-1 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-            >Feed back Form</a>
-          <a
-            @click.prevent="scrollToSection('faqs')"
-            class="block mx-2 md:mx-4 px-2 md:px-4 rounded-lg py-2 hover:bg-qelem-secondary-light"
-            >FAQs</a>
-          <a
-            @click.prevent="scrollToSection('contact-us')"
-            class="block mx-2 md:mx-4 px-2 md:px-4 rounded-lg py-2 hover:bg-qelem-secondary-light"
-            >Contact Us</a>
-          <a
-            href="#"
-            class="block mx-2 md:mx-4 mb-1 px-2 md:px-4 rounded-lg py-2 hover:bg-qelem-secondary-light"
-            >Announcment</a>
-        </div>
-      </div>
-    </div>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:bg-gray-200 active:bg-gray-200 font-medium">
+          <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.5 21a7.5 7.5 0 0113 0" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          About
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:bg-gray-200 active:bg-gray-200 font-medium">
+          <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 17v-2a4 4 0 014-4h8a4 4 0 014 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="4" y="4" width="16" height="8" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Services
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:bg-gray-200 active:bg-gray-200 font-medium">
+          <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="7" width="18" height="13" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 3v4M8 3v4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Portfolio
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:bg-gray-200 active:bg-gray-200 font-medium">
+          <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-2 2 2h4a2 2 0 012 2v12a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Blog
+        </a>
+      </li>
+      <li>
+        <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:bg-gray-200 active:bg-gray-200 font-medium">
+          <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Contact
+        </a>
+      </li>
+    </ul>
 
-    <!-- Language Selector & Login -->
-    <div class="hidden lg:flex md:items-center  md:space-x-2 lg:space-x-6 pr-2 lg:pr-10">
-      <div class="relative">
-        <button
-          @click="showLangCard = !showLangCard"
-          class="border-2 border-gray-100 rounded-lg py-2 px-2 md:py-2.5 lg:px-4 md:px-2 text-base md:text-lg focus:bg-qelem-secondary-light focus:border-0 text-qelem-netural-300 flex items-center">
-          English
-          <svg
-            class="ml-2 w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <div
-          v-if="showLangCard"
-          class="absolute right-0 mt-2 w-44 md:w-64 bg-white border-2 border-gray-100 rounded-lg shadow-lg z-20 text-base md:text-lg text-qelem-netural">
-          <ul>
-            <li>
-              <a
-                href="#"
-                class="block mx-2 md:mx-4 mt-1 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-                >English</a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block mx-2 md:mx-4 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-                >Amharic</a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block mx-2 md:mx-4 mb-1 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-                >Afaan Oromo</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div
-        @click="toggleDarkMode"
-        class="h-9 w-6 md:h-10 md:w-8 py-1 px-0.5 bg-qelem-white border-2 border-gray-100 rounded-lg">
-        <svg
-          v-if="!darkMode"
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M12.058 20q-3.334 0-5.667-2.333T4.058 12q0-3.039 1.98-5.27t4.904-2.634q.081 0 .159.006t.153.017q-.506.706-.801 1.57T10.158 7.5q0 2.667 1.866 4.533t4.534 1.867q.951 0 1.813-.295t1.548-.801q.012.075.017.153t.006.159q-.384 2.923-2.615 4.903T12.057 20"
-          />
+    <!-- Right Side -->
+    <div class="flex items-center space-x-2">
+      <!-- Theme Toggle -->
+      <button class="p-2 rounded-full hover:bg-gray-100 transition">
+        <svg class="h-6 w-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 512 512">
-          <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            d="M277.333 405.333v85.333h-42.667v-85.333zm99.346-58.824l60.34 60.34l-30.17 30.17l-60.34-60.34zm-241.359 0l30.17 30.17l-60.34 60.34l-30.17-30.17zM256 139.353c64.422 0 116.647 52.224 116.647 116.647c0 64.422-52.225 116.647-116.647 116.647A116.427 116.427 0 0 1 139.352 256c0-64.423 52.225-116.647 116.648-116.647m0 42.666c-40.859 0-73.981 33.123-73.981 74.062a73.76 73.76 0 0 0 21.603 52.296c13.867 13.867 32.685 21.64 52.378 21.603zm234.666 52.647v42.667h-85.333v-42.667zm-384 0v42.667H21.333v-42.667zM105.15 74.98l60.34 60.34l-30.17 30.17l-60.34-60.34zm301.7 0l30.169 30.17l-60.34 60.34l-30.17-30.17zM277.332 21.333v85.333h-42.667V21.333z"
-          />
+      </button>
+      <!-- Call to Action -->
+      <a href="#" class="bg-gray-900 text-white font-bold px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-800 transition">
+        <span>Let's Talk</span>
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M17 7l-10 10M17 7h-6m6 0v6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </div>
-      <router-link to="/login"
-        class="px-3 md:px-4 py-2 md:py-3 bg-qelem-primary hover:bg-qelem-secondary text-white rounded-xl text-sm md:text-md">
-        Login
-      </router-link>
-    </div>
-    <!-- Mobile menu button -->
-    <div>
-      <button @click="mobileMenu = !mobileMenu" class="lg:hidden focus:outline-none ml-2">
-        <svg
-          class="w-6 h-6 text-gray-700"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            v-if="!mobileMenu"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-          <path
-            v-else
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
+      </a>
+      <!-- Mobile Menu Button -->
+      <button @click="mobileMenu = !mobileMenu" class="md:hidden p-2 rounded-full hover:bg-gray-100 transition">
+        <svg v-if="!mobileMenu" class="h-6 w-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg v-else class="h-6 w-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
     </div>
 
     <!-- Mobile Menu -->
-    <div
-      v-if="mobileMenu"
-      class="lg:hidden absolute top-full min-h-screen left-0 w-1/2 bg-qelem-white shadow-xl border-t border-gray-200 z-20">
-      <div class="flex flex-col space-y-2 px-4 py-2">
-        <router-link
-          to="/"
-          class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-          Home
-        </router-link>
-        <router-link
-          to="/"
-          class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-          Check Result
-        </router-link>
-        <router-link
-          to="/"
-          class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-          Complaint
-        </router-link>
-        <router-link
-          to="/"
-          class="hover:text-qelem-secondary group relative flex items-center whitespace-nowrap">
-          Top Scorers
-        </router-link>
-
-        <!-- Dropdown in mobile -->
-        <div>
-          <button
-            @click="openDropdown = !openDropdown"
-            class="hover:text-qelem-secondary group relative flex items-center cursor-pointer whitespace-nowrap">
-            Resources
-            <svg
-              class="ml-1 w-5 h-5 md:w-6 md:h-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    <transition name="fade">
+      <div v-if="mobileMenu" class="fixed inset-0 z-40 bg-black/40 flex justify-end md:hidden">
+        <div class="bg-white w-64 h-full p-6 space-y-4 shadow-lg ">
+          <button @click="mobileMenu = false" class="mb-6 p-2 rounded-full  hover:bg-gray-100 transition">
+            <svg class="h-6 w-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span
-              class="absolute left-0 right-0 bottom-[-20px] md:bottom-[-35px] w-full h-0.5 bg-qelem-secondary scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
-            ></span>
           </button>
-          <div v-if="openDropdown" class="pl-4 mt-1">
-            <a
-              href="#"
-              class="block mx-2 md:mx-4 mt-1 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-              >Feed back Form</a>
-            <a
-              href="#"
-              class="block mx-2 md:mx-4 px-2 md:px-4 rounded-lg py-2 hover:bg-qelem-secondary-light"
-              >FAQs</a>
-            <a
-              href="#"
-              class="block mx-2 md:mx-4 px-2 md:px-4 rounded-lg py-2 hover:bg-qelem-secondary-light"
-              >Contact Us</a>
-            <a
-              href="#"
-              class="block mx-2 md:mx-4 mb-1 px-2 md:px-4 rounded-lg py-2 hover:bg-qelem-secondary-light"
-              >Announcment</a>
-          </div>
-        </div>
-
-        <!-- Language Selector & Login -->
-        <div class="items-center min-w-0">
-          <div class="relative">
-            <button
-              @click="showLangCard = !showLangCard"
-              class="border-2 border-gray-100 rounded-lg py-2 px-2 md:py-2.5 lg:px-4 md:px-2 text-base md:text-lg focus:bg-qelem-secondary-light focus:border-0 text-qelem-netural flex items-center">
-              English
-              <svg
-                class="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div
-              v-if="showLangCard"
-              class="absolute left-0 right-0 mt-2 w-44 md:w-64 bg-white border-2 border-gray-100 rounded-lg shadow-lg z-20 text-base md:text-lg text-qelem-netural">
-              <ul>
-                <li>
-                  <a
-                    href="#"
-                    class="block mx-2 md:mx-4 mt-1 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-                    >English</a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="block mx-2 md:mx-4 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-                    >Amharic</a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="block mx-2 md:mx-4 mb-1 rounded-lg px-2 md:px-4 py-2 hover:bg-qelem-secondary-light"
-                    >Afaan Oromo</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex items-center space-x-2 mt-2">
-            <div
-              @click="toggleDarkMode"
-              class="h-9 w-6 md:h-10 md:w-8 py-1 px-0.5 bg-qelem-white border-2 border-gray-100 rounded-lg">
-              <svg
-                v-if="!darkMode"
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M12.058 20q-3.334 0-5.667-2.333T4.058 12q0-3.039 1.98-5.27t4.904-2.634q.081 0 .159.006t.153.017q-.506.706-.801 1.57T10.158 7.5q0 2.667 1.866 4.533t4.534 1.867q.951 0 1.813-.295t1.548-.801q.012.075.017.153t.006.159q-.384 2.923-2.615 4.903T12.057 20"
-                />
-              </svg>
-              <svg
-                v-else
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  d="M277.333 405.333v85.333h-42.667v-85.333zm99.346-58.824l60.34 60.34l-30.17 30.17l-60.34-60.34zm-241.359 0l30.17 30.17l-60.34 60.34l-30.17-30.17zM256 139.353c64.422 0 116.647 52.224 116.647 116.647c0 64.422-52.225 116.647-116.647 116.647A116.427 116.427 0 0 1 139.352 256c0-64.423 52.225-116.647 116.648-116.647m0 42.666c-40.859 0-73.981 33.123-73.981 74.062a73.76 73.76 0 0 0 21.603 52.296c13.867 13.867 32.685 21.64 52.378 21.603zm234.666 52.647v42.667h-85.333v-42.667zm-384 0v42.667H21.333v-42.667zM105.15 74.98l60.34 60.34l-30.17 30.17l-60.34-60.34zm301.7 0l30.169 30.17l-60.34 60.34l-30.17-30.17zM277.332 21.333v85.333h-42.667V21.333z"
-                />
-              </svg>
-            </div>
-            <button
-              class="px-3 md:px-4 py-2 md:py-3 bg-qelem-primary hover:bg-qelem-secondary text-white rounded-xl text-sm md:text-md">
-              Login
-            </button>
-          </div>
+          <a href="#" class="flex items-center px-4 py-2 rounded-xl bg-gray-100 text-gray-900 font-medium">
+            <svg class="h-5 w-5 mr-2 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Home
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:text-blue-500 font-medium">
+            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M5.5 21a7.5 7.5 0 0113 0" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            About
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:text-blue-500 font-medium">
+            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 17v-2a4 4 0 014-4h8a4 4 0 014 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="4" y="4" width="16" height="8" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Services
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:text-blue-500 font-medium">
+            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="7" width="18" height="13" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 3v4M8 3v4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Portfolio
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:text-blue-500 font-medium">
+            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-2 2 2h4a2 2 0 012 2v12a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Blog
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 rounded-xl text-gray-500 hover:text-blue-500 font-medium">
+            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Contact
+          </a>
+          <a href="#" class="bg-gray-900 text-white font-bold px-6 py-3 rounded-xl flex items-center space-x-2 hover:bg-gray-800 transition">
+            <span>Let's Talk</span>
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M17 7l-10 10M17 7h-6m6 0v6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+const mobileMenu = ref(false)
+</script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style>
