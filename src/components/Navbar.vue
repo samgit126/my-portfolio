@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white/80 backdrop-blur-md rounded-2xl shadow px-4 py-3 mx-24 my-5 flex items-center justify-between">
+  <nav class="bg-white fixed left-0 top-0 right-0 z-50 backdrop-blur-md rounded-2xl shadow px-4 py-3 mx-24 my-5 flex items-center justify-between">
     <div class="flex items-center space-x-2">
       <span class="text-2xl font-semibold text-gray-900">
         Samuel <span class="text-blue-500">Temesgen</span>

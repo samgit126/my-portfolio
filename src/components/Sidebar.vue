@@ -13,7 +13,7 @@ function copyEmail() {
 </script>
 
 <template>
-  <div class="lg:block hidden bg-white/80 backdrop-blur-md rounded-2xl shadow px-4 py-3 max-w-sm mx-24">
+  <div class="lg:block hidden bg-white/80 backdrop-blur-md rounded-2xl mt-28 shadow px-4 py-3 max-w-sm mx-24">
     <img src="/ceo.jpg" alt="Profile" class="w-full h-64 mb-4" />
     <h2 class="mt-2 mb-1 text-xl font-semibold text-left font-serif">Samuel Temesgen</h2>
     <p class="mb-4 text-gray-600 text-justify">
