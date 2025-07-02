@@ -6,7 +6,7 @@
     </div>
     <img
       class="w-full h-64 object-fit p-3"
-      src="/public/project.PNG"
+      src="/project.PNG"
       alt="Project Image"
     />
     <div class="px-6 py-4">
@@ -14,7 +14,7 @@
     </div>
     <img
       class="w-full h-64 object-fit p-3"
-      src="/public/lyu.PNG"
+      src="/lyu.PNG"
       alt="Project Image"
     />
     <div class="px-6 py-4">

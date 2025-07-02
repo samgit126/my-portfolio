@@ -18,15 +18,15 @@
       <h1 class="text-xl font-semibold font-inter">My Expert Area</h1>
       <div class="grid grid-cols-3 gap-3">
         <div class="p-3">
-          <img src="/public/vue.png" class="w-8 h-8 bg-gray" />
+          <img src="/vue.png" class="w-8 h-8 bg-gray" />
           <h1>Vue Js</h1>
         </div>
         <div class="p-3">
-          <img src="/public/taliwind.png" class="w-8 h-8 bg-gray" />
+          <img src="/taliwind.png" class="w-8 h-8 bg-gray" />
           <h1>Tailwind</h1>
         </div>
         <div class="p-3">
-          <img src="/public/laravel.png" class="w-8 h-8 bg-gray" />
+          <img src="/laravel.png" class="w-8 h-8 bg-gray" />
           <h1>Laravel</h1>
         </div>
       </div>

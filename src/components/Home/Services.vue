@@ -11,19 +11,19 @@
       </div>
       <div class="grid grid-cols-4 p-4 gap-4">
         <div class="bg-gray-50 p-2 w-full">
-          <img src="/public/system.png" class="p-4 rounded-2xl" />
+          <img src="/system.png" class="p-4 rounded-2xl" />
           <h1 class="text-center font-medium">System dev't</h1>
         </div>
         <div class="bg-gray-50 p-2 w-full">
-          <img src="/public/mobile.png" class="p-4 rounded-2xl" />
+          <img src="/mobile.png" class="p-4 rounded-2xl" />
           <h1 class="text-center font-medium">Mobile App</h1>
         </div>
         <div class="bg-gray-50 p-2 w-full">
-          <img src="/public/ui.png" class="p-4 rounded-2xl" />
+          <img src="/ui.png" class="p-4 rounded-2xl" />
           <h1 class="text-center font-medium">UI/UX Design</h1>
         </div>
         <div class="bg-gray-50 p-2 w-full">
-          <img src="/public/training.png" class="p-4 rounded-2xl" />
+          <img src="/training.png" class="p-4 rounded-2xl" />
           <h1 class="text-center font-medium">Professional Training</h1>
         </div>
       </div>
